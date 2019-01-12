@@ -15,7 +15,8 @@
 *.ilk
 *.map
 *.exp
-
+/lib/.deps/
+/src/switcher-pwm
 # Precompiled Headers
 *.gch
 *.pch
