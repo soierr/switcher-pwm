@@ -87,7 +87,7 @@ EXPORT int PWMPlay(int pwm, int freq, int duty)
         return -1;
     }
 
-    if ((devFD = openHW("/dev/pwm", O_RDONLY)) == -1) {
+    if ((devFD = openHW("/sys/class/pwm/pwm0", O_RDONLY)) == -1) {
         setLastError("Fail to open pwm device");
         return -1;
     }
@@ -107,7 +107,7 @@ EXPORT int PWMStop(int pwm)
     int devFD = -1;
     int gpio = pwmtoGPIO(pwm);
     
-    if ((devFD = openHW("/dev/pwm", O_RDONLY)) == -1) {
+    if ((devFD = openHW("/sys/class/pwm/pwm0", O_RDONLY)) == -1) {
         setLastError("Fail to open pwm device");
         return -1;
     }
