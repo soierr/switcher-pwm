@@ -6,8 +6,6 @@ SRC 	+= $(wildcard *.h)
 
 $(TARGET):$(SRC)
 	$(CC) -o $@ -L ../lib/ -I ../lib/includes/ $^ -lfahw -Wall
-#$(TARGET):$(SRC)
-#	$(CC) -o $@ -I ./includes/ $^ -lm -Wall
 
 .PHONY: clean 
 clean:

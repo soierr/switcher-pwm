@@ -28,8 +28,7 @@ $(SUBDIRS):
 
 clean distclean: $(patsubst %, %.clean, $(SUBDIRS))
 
-install:
-	make -C ./src install 
+install: 
 	make -C ./lib install
 
 .PHONY: $(PHONY) install clean distclean
