@@ -103,7 +103,7 @@ EXPORT int PWMPlay(int pwm, int freq, int duty)
         closeHW(devFD);
         return -1;
     }*/
-    closeHW(devFD);
+    //closeHW(devFD);
     return 0;
 }
 
