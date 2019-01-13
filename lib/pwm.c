@@ -92,7 +92,7 @@ EXPORT int PWMPlay(int pwm, int freq, int duty)
         return -1;
     }*/
 
-    writeValueToFile("/sys/class/pwm/pwmchip0/export", 0);
+    //writeValueToFile("/sys/class/pwm/pwmchip0/export", 0);
     /*writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/period", "10000000");
     writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/polarity", "normal");
     writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/enable", "1");

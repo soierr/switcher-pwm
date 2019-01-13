@@ -44,7 +44,7 @@ int main(int argc, char ** argv)
     printf("Press enter to stop PWM\n");
     getchar();
     PWMStop(pwm);
-    system("rmmod "DRIVER_MODULE);
+    //system("rmmod "DRIVER_MODULE);
     
     return 0;
 }
