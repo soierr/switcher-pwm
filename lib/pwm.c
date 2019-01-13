@@ -87,10 +87,10 @@ EXPORT int PWMPlay(int pwm, int freq, int duty)
         return -1;
     }
 
-    if ((devFD = openHW("/sys/class/pwm/pwmchip0", O_RDONLY)) == -1) {
+    /*if ((devFD = openHW("/sys/class/pwm/pwmchip0", O_RDONLY)) == -1) {
         setLastError("Fail to open pwm device");
         return -1;
-    }
+    }*/
 
     writeValueToFile("/sys/class/pwm/pwmchip0/export", 0);
     /*writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/period", "10000000");
