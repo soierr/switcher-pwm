@@ -87,16 +87,22 @@ EXPORT int PWMPlay(int pwm, int freq, int duty)
         return -1;
     }
 
-    if ((devFD = openHW("/sys/class/pwm/pwm0", O_RDONLY)) == -1) {
+    if ((devFD = openHW("/sys/class/pwm/pwmchip0", O_RDONLY)) == -1) {
         setLastError("Fail to open pwm device");
         return -1;
     }
 
-    if (ioctl(devFD, PWM_IOCTL_SET_FREQ, arg) == -1) {
+    writeValueToFile("/sys/class/pwm/pwmchip0/export", 0);
+    writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/period", "10000000");
+    writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/polarity", "normal");
+    writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/enable", "1");
+    writeValueToFile("/sys/class/pwm/pwmchip0/pwm0/duty_cycle", "1000000");
+
+    /*if (ioctl(devFD, PWM_IOCTL_SET_FREQ, arg) == -1) {
         setLastError("Fail to set pwm");
         closeHW(devFD);
         return -1;
-    }
+    }*/
     closeHW(devFD);
     return 0;
 }
