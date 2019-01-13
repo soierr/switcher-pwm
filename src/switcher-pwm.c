@@ -26,7 +26,7 @@ int main(int argc, char ** argv)
         return -1;
     } 
     
-    system("modprobe "DRIVER_MODULE);
+    //system("modprobe "DRIVER_MODULE);
     signal(SIGINT, intHandler);
     if (argc == 4) {
         // Usage:matrix-pwm channel freq duty[0~1000]
