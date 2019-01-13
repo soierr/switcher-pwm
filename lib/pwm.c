@@ -4,6 +4,8 @@
 
 static int pwmGPIO[3];
 static int pwmNum = -1;
+static struct PWMParams * p;
+
 int initPwmGPIO(int board)
 {
     clearLastError();
@@ -105,6 +107,12 @@ EXPORT int PWMPlay(int pwm, int freq, int duty)
     }*/
     //closeHW(devFD);
     return 0;
+}
+
+EXPORT void * PWMStart(void * pwmParams){
+	p = pwmParams;
+	printf("Hello from another thread %d\n", p->dutyCycle);
+	return NULL;
 }
 
 EXPORT int PWMStop(int pwm) 

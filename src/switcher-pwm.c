@@ -3,16 +3,18 @@
 #include <stdlib.h>
 #include <signal.h>
 #include "libfahw.h"
+#include <pthread.h>
 
-#define DRIVER_MODULE "matrix_pwm"
+//#define DRIVER_MODULE "matrix_pwm"
 static int pwm;
+static struct PWMParams pwmParams = { 10, 15 };
 
 void intHandler(int signNum)
 {
     if (signNum == SIGINT) {
         printf("Clean up\n");
         PWMStop(pwm);
-        system("rmmod "DRIVER_MODULE);
+        //system("rmmod "DRIVER_MODULE);
     }
     exit(0);
 }
@@ -38,9 +40,20 @@ int main(int argc, char ** argv)
         duty = 500;
         printf("Using default config: channel=%d freq=%dHz duty=%d\n", pwm, Hz, duty);
     }
-    if (PWMPlay(pwm, Hz, duty) == -1) {
+
+
+
+    /*if (PWMPlay(pwm, Hz, duty) == -1) {
         printf("Fail to output PWM\n");
-    }  
+    }*/
+
+    pthread_t pwmThread;
+
+    if(pthread_create(&pwmThread, NULL, PWMStart, &pwmParams)) {
+    	printf("Error creating thread\n");
+    	return 1;
+    }
+
     printf("Press enter to stop PWM\n");
     getchar();
     PWMStop(pwm);

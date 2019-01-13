@@ -6,7 +6,13 @@
 #define PWM_IOCTL_CONFIG        (0x4)
 #define PWM_IOCTL_RELEASE       (0x8)
 
+struct PWMParams {
+	long period;
+	long dutyCycle;
+};
+
 int initPwmGPIO(int board);
+void * PWMStart(void * pwmParams);
 int PWMPlay(int pin, int freq, int duty);
 int PWMStop(int pin);
 

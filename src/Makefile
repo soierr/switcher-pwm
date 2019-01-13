@@ -5,7 +5,7 @@ SRC 	=  $(wildcard *.c)
 SRC 	+= $(wildcard *.h)
 
 $(TARGET):$(SRC)
-	$(CC) -o $@ -L ../lib/ -I ../lib/includes/ $^ -lfahw -Wall
+	$(CC) -o $@ -L ../lib/ -I ../lib/includes/ $^ -lfahw -Wall -lpthread
 
 .PHONY: clean 
 clean:
